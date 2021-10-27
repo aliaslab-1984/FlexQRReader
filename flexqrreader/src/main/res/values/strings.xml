@@ -1,0 +1,13 @@
+<resources>
+    <string name="msg_default_status">SCAN QR</string>
+    <string name="msg_default_substatus" translatable="false">displayed on the screen</string>
+
+    <string name="msg_default_format" translatable="false">Format</string>
+    <string name="msg_default_type" translatable="false">Type</string>
+    <string name="msg_default_meta" translatable="false">Metadata</string>
+    <string name="msg_default_time" translatable="false">Time</string>
+    <string name="msg_camera_framework_bug" translatable="false">Sorry, the Android camera encountered a problem. You may need to restart the device.</string>
+    <string name="enrollment_in_progress">Enrollment in progress</string>
+    <string name="enrollment_error_desc">An error occurred while trying to enroll this account. The reported error is:_</string>
+    <string name="zebra_description">Select if you prefer to use Google\'s Vision framework or the Zxing\'s version.</string>
+</resources>

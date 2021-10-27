@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="msg_default_status">SCAN QR</string>
+    <string name="enrollment_in_progress">Enrollment in corso</string>
+    <string name="enrollment_error_desc">Si è verificato un errore durante il processo di enrollment. L\'errore registrato è:</string>
+    <string name="zebra_description">Seleziona se preferisci utilizzare il framework Vision di Google o Zxing per il riconoscimento del codice QR.</string>
+</resources>
