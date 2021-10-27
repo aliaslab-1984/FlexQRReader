@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/FlexQRReader.iml" filepath="$PROJECT_DIR$/.idea/modules/FlexQRReader.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/flexqrreader/FlexQRReader.flexqrreader.iml" filepath="$PROJECT_DIR$/.idea/modules/flexqrreader/FlexQRReader.flexqrreader.iml" />
+    </modules>
+  </component>
+</project>

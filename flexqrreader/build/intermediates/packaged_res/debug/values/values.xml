@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:ns1="http://schemas.android.com/tools">
+    <color name="black">#FF000000</color>
+    <color name="caGray">#999999</color>
+    <color name="ca_red">#ffC53C7C</color>
+    <color name="colorAccent">#999999</color>
+    <color name="colorError">#ffcc0000</color>
+    <color name="colorPallino">#8cbe2b</color>
+    <color name="encode_view">#ffffffff</color>
+    <color name="next2white">#F9F9F9</color>
+    <color name="possible_result_points">#c0ffbd21</color>
+    <color name="pressedColor">#9cacb9</color>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="result_minor_text">#ffc0c0c0</color>
+    <color name="result_points">#c099cc00</color>
+    <color name="result_text">#ffffffff</color>
+    <color name="result_view">#b0000000</color>
+    <color name="status_text">#ffffffff</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="team_system_blue">#2483C2</color>
+    <color name="team_system_blue_darker">#1257A2</color>
+    <color name="team_system_orange">#F39940</color>
+    <color name="team_system_yellow">#FBC831</color>
+    <color name="time_good">#c099cc00</color>
+    <color name="time_intermediate">#e1ad01</color>
+    <color name="time_over">#ffcc0000</color>
+    <color name="transparent">#00000000</color>
+    <color name="viewfinder_laser">#ffcc0000</color>
+    <color name="viewfinder_mask">#60000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="half_padding">4dip</dimen>
+    <dimen name="secret_input_square_side">45dp</dimen>
+    <dimen name="standard_padding">8dip</dimen>
+    <dimen name="text_margin">16dp</dimen>
+    <dimen name="text_size_l">28sp</dimen>
+    <dimen name="text_size_m">22sp</dimen>
+    <dimen name="text_size_s">19sp</dimen>
+    <dimen name="text_size_xl">34sp</dimen>
+    <dimen name="text_size_xs">15sp</dimen>
+    <item name="decode" type="id"/>
+    <item name="decode_failed" type="id"/>
+    <item name="decode_succeeded" type="id"/>
+    <item name="launch_product_query" type="id"/>
+    <item name="quit" type="id"/>
+    <item name="restart_preview" type="id"/>
+    <item name="return_scan_result" type="id"/>
+    <integer name="pin_length">5</integer>
+    <string name="enrollment_error_desc">An error occurred while trying to enroll this account. The reported error is:_</string>
+    <string name="enrollment_in_progress">Enrollment in progress</string>
+    <string name="msg_camera_framework_bug" translatable="false">Sorry, the Android camera encountered a problem. You may need to restart the device.</string>
+    <string name="msg_default_format" translatable="false">Format</string>
+    <string name="msg_default_meta" translatable="false">Metadata</string>
+    <string name="msg_default_status">SCAN QR</string>
+    <string name="msg_default_substatus" translatable="false">displayed on the screen</string>
+    <string name="msg_default_time" translatable="false">Time</string>
+    <string name="msg_default_type" translatable="false">Type</string>
+    <string name="zebra_description">Select if you prefer to use Google\'s Vision framework or the Zxing\'s version.</string>
+    <style name="CaptureTheme" parent="android:Theme.Holo">
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowActionBarOverlay">false</item>
+        <item name="android:windowActionModeOverlay">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+    <style name="Theme.AliasAuth" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/team_system_blue</item>
+        <item name="colorPrimaryVariant">@color/team_system_blue_darker</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/team_system_blue</item>
+        <item name="colorSecondaryVariant">@color/team_system_yellow</item>
+        <item name="colorOnSecondary">@color/black</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor" ns1:targetApi="l">?attr/colorPrimaryVariant</item>
+        <!-- Customize your theme here. -->
+    </style>
+    <style name="ToolbarTheme" parent="@style/ThemeOverlay.AppCompat.ActionBar">
+        <!-- Customize color of navigation drawer icon and back arrow -->
+        <item name="colorControlNormal">@color/white</item>
+    </style>
+</resources>
