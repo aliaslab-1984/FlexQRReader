@@ -1,6 +1,8 @@
 plugins {
     id 'com.android.library'
     id 'kotlin-android'
+    id 'com.jfrog.artifactory'
+    id 'maven-publish'
 }
 
 def libraryVersion = '1.0.0'  // vedi versionName + versionCode
@@ -20,9 +22,21 @@ android {
     }
 
     buildTypes {
+
+        codedebug {
+            minifyEnabled false
+            testCoverageEnabled false
+            buildConfigField("String", "VERSION_NAME", "\"${defaultConfig.versionName}\"")
+        }
+        debug {
+            minifyEnabled false
+            testCoverageEnabled true
+            buildConfigField("String", "VERSION_NAME", "\"${defaultConfig.versionName}\"")
+        }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            buildConfigField("String", "VERSION_NAME", "\"${defaultConfig.versionName}\"")
         }
     }
     compileOptions {
