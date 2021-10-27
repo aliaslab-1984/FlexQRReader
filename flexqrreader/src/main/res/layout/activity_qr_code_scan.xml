@@ -7,11 +7,20 @@
     android:background="@color/team_system_blue"
     >
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/qr_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:elevation="4dp"/>
+
     <net.aliaslab.securecall.flexqrreader.playvision.camera.CameraSourcePreview
         android:id="@+id/preview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:visibility="visible">
+        android:visibility="visible"
+        android:layout_below="@+id/qr_toolbar"
+        android:layout_marginTop="0dp"
+        >
         <!--
         <net.aliaslab.securecallotp.views.camera.GraphicOverlay
             android:id="@+id/graphicOverlay"
@@ -24,20 +33,23 @@
         android:orientation="vertical"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:background="@color/transparent">
+        android:background="@color/transparent"
+        android:layout_below="@+id/qr_toolbar"
+        android:layout_marginTop="0dp"
+        >
 
         <TextView
             android:id="@+id/status_view"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="top|center_horizontal"
-            android:layout_marginTop="45dp"
+            android:layout_marginTop="12dp"
             android:background="@color/transparent"
             android:fontFamily="sans-serif-medium"
             android:gravity="center_horizontal"
             android:text="@string/msg_default_status"
             android:textColor="@color/team_system_blue"
-            android:textSize="16sp"
+            android:textSize="20sp"
             android:textStyle="bold" />
 
         <TextView
