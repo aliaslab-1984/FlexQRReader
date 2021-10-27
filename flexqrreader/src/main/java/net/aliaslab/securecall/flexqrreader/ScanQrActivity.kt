@@ -33,7 +33,7 @@ import java.util.ArrayList
  * There's only one method that needs to be overridden: `handleEncodedData(encodedData: String)`
  * This method will be called every time the child QR Activity reads a string from the QR code.
  */
-abstract class ScanQrActivity : AppCompatActivity() {
+public abstract class ScanQrActivity : AppCompatActivity() {
 
     private val MY_PERMISSIONS_REQUEST_CAMERA = 1
     private val QR_DECODING = 2

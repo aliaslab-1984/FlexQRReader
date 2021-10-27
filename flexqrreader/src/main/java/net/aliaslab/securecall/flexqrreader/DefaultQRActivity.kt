@@ -3,7 +3,7 @@ package net.aliaslab.securecall.flexqrreader
 import android.content.Intent
 import android.util.Log
 
-class DefaultQRActivity: ScanQrActivity() {
+public class DefaultQRActivity: ScanQrActivity() {
 
     override fun handleEncodedData(encodedData: String) {
         Log.d("QRLauncher", "Scanner found result: $encodedData")

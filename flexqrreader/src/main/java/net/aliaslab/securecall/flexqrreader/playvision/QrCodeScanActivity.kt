@@ -28,7 +28,7 @@ import java.io.IOException
  * a QR-code is found the activity finishes. To get the result, override onActivityResult in the caller
  * activity, and retrieve the string with key QrCodeScanActivity.QR_STRING_CONTENT_KEY from the extras.
  */
-class QrCodeScanActivity : Activity() {
+public class QrCodeScanActivity : Activity() {
     private var cameraSource: CameraSource? = null
     private var preview: CameraSourcePreview? = null
     private var needsQR = true

@@ -17,4 +17,5 @@
         android:name="android.hardware.wifi"
         android:required="false" />
 
+
 </manifest>
