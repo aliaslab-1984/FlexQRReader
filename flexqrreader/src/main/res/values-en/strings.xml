@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="msg_default_status">SCAN QR</string>
-    <string name="enrollment_in_progress">Enrollment in progress</string>
     <string name="enrollment_error_desc">An error occurred while trying to enroll this account. The reported error is:_</string>
     <string name="zebra_description">Select if you prefer to use Google\'s Vision framework or the Zxing\'s one for detecting QR Codes.</string>
 </resources>
