@@ -12,6 +12,7 @@ import android.hardware.Camera
 import android.os.Bundle
 import android.util.Log
 import android.view.KeyEvent
+import android.widget.Toolbar
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.google.android.gms.vision.Detector
@@ -75,7 +76,7 @@ public class QrCodeScanActivity : Activity() {
             .build()
         barcodeDetector = detector
         cameraSource = CameraSource.Builder(this, barcodeDetector)
-            .setRequestedPreviewSize(640, 480)
+            // .setRequestedPreviewSize(640, 480)
             .setFocusMode(Camera.Parameters.FOCUS_MODE_CONTINUOUS_PICTURE)
             .build()
 

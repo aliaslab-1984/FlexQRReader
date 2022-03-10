@@ -12,6 +12,7 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/flexqrreader" />
+            <option value="$PROJECT_DIR$/flexqrreader/qrdemoapp" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

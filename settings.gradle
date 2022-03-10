@@ -1,2 +1,3 @@
 rootProject.name = "FlexQRReader"
 include ':flexqrreader'
+include ':flexqrreader:qrdemoapp'
