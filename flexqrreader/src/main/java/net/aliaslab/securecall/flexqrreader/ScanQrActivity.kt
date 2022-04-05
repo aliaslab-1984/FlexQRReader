@@ -16,6 +16,7 @@ import net.aliaslab.securecall.flexqrreader.R
 import net.aliaslab.securecall.flexqrreader.playvision.PlayVision
 import net.aliaslab.securecall.flexqrreader.utils.Utils
 import net.aliaslab.securecall.flexqrreader.playvision.QrCodeScanActivity
+import net.aliaslab.securecall.flexqrreader.playvision.camerax.QRScanActivityX
 import net.aliaslab.securecall.flexqrreader.zxing.IntentIntegrator
 import net.aliaslab.securecall.flexqrreader.zxing.IntentResult
 import net.aliaslab.securecall.flexqrreader.zxing.android.Intents
@@ -74,6 +75,8 @@ public abstract class ScanQrActivity : AppCompatActivity() {
 
         val useZx = PreferenceManager.getDefaultSharedPreferences(applicationContext)
             .getBoolean("zx", false)
+        val useCameraX = PreferenceManager.getDefaultSharedPreferences(applicationContext)
+            .getBoolean("camerax", false)
         val verboseMsg = "Starting QRcodeScanner..."
 
         Utils.getPackageInfo(this)
@@ -87,9 +90,13 @@ public abstract class ScanQrActivity : AppCompatActivity() {
 
             // Google Play services
                 // LogEngine.debug("RAD42G", verboseMsg)
-
-            val intent = Intent(this, QrCodeScanActivity::class.java)
-            resultLauncher.launch(intent)
+                    if (useCameraX) {
+                        val intent = Intent(this, QRScanActivityX::class.java)
+                        resultLauncher.launch(intent)
+                    } else {
+                        val intent = Intent(this, QrCodeScanActivity::class.java)
+                        resultLauncher.launch(intent)
+                    }
         } else {
 
             // Zebra fallback

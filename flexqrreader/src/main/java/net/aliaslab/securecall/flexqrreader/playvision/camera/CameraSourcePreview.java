@@ -125,14 +125,14 @@ public class CameraSourcePreview extends ViewGroup {
         }
 
         @Override
-        public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) { /* */ }
+        public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) { /**/ }
     }
 
     @RequiresPermission(Manifest.permission.CAMERA)
     @Override
     protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
-        int width = 320;
-        int height = 240;
+        int width = 1920;
+        int height = 1080;
         if (mCameraSource != null) {
             Size size = mCameraSource.getPreviewSize();
             if (size != null) {

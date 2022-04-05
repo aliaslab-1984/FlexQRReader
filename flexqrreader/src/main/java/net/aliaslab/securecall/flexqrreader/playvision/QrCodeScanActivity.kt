@@ -12,7 +12,6 @@ import android.hardware.Camera
 import android.os.Bundle
 import android.util.Log
 import android.view.KeyEvent
-import android.widget.Toolbar
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.google.android.gms.vision.Detector

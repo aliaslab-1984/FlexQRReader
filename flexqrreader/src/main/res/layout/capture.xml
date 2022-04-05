@@ -208,7 +208,7 @@
         android:background="@color/transparent"
         android:gravity="center_horizontal"
         android:text="@string/msg_default_status"
-        android:textColor="@color/team_system_blue"
+        android:textColor="@color/main_accent_color"
         android:textSize="18sp"
         android:textStyle="bold" />
 

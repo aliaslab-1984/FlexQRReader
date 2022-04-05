@@ -17,5 +17,10 @@
         android:name="android.hardware.wifi"
         android:required="false" />
 
+    <application>
+        <activity
+            android:name=".playvision.camerax.QRScanActivityX"
+            android:exported="false" />
+    </application>
 
 </manifest>

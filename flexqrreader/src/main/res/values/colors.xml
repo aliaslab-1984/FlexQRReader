@@ -29,8 +29,8 @@
     <color name="time_intermediate">#e1ad01</color>
     <color name="time_over">#ffcc0000</color>
 
-    <color name="team_system_blue">#2483C2</color>
-    <color name="team_system_blue_darker">#1257A2</color>
+    <color name="main_accent_color">#2483C2</color>
+    <color name="main_accent_color_dark">#1257A2</color>
     <color name="team_system_orange">#F39940</color>
     <color name="team_system_yellow">#FBC831</color>
 </resources>
