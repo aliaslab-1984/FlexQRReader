@@ -5,7 +5,7 @@ plugins {
     id 'maven-publish'
 }
 
-def libraryVersion = '1.0.3'  // vedi versionName + versionCode
+def libraryVersion = '1.0.4'  // vedi versionName + versionCode
 
 android {
     compileSdkVersion 31
@@ -14,8 +14,6 @@ android {
     defaultConfig {
         minSdkVersion 21
         targetSdkVersion 31
-        versionCode 3
-        versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
@@ -57,9 +55,9 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     implementation 'androidx.core:core-ktx:1.7.0'
     implementation 'androidx.appcompat:appcompat:1.4.1'
-    implementation 'com.google.android.material:material:1.4.0'
+    implementation 'com.google.android.material:material:1.5.0'
 
-    implementation 'androidx.preference:preference-ktx:1.1.1'
+    implementation 'androidx.preference:preference-ktx:1.2.0'
 
     // zebra
     implementation 'com.google.zxing:core:3.4.1'
@@ -77,7 +75,7 @@ dependencies {
 
 
     // CameraX core library
-    def camerax_version = '1.1.0-beta02'
+    def camerax_version = '1.1.0-beta03'
     implementation "androidx.camera:camera-core:$camerax_version"
 
     // CameraX Camera2 extensions
