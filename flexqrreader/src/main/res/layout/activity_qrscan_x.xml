@@ -16,40 +16,4 @@
         app:layout_constraintEnd_toEndOf="parent"
         />
 
-    <TextView
-        android:id="@+id/status_view"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="top|center_horizontal"
-        android:layout_marginTop="12dp"
-        android:background="@color/transparent"
-        android:fontFamily="sans-serif-medium"
-        android:gravity="center_horizontal"
-        android:text="@string/qr_scan_overlay_title"
-        android:textColor="@color/white"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        />
-
-    <TextView
-        android:id="@+id/subtitle_status_view"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="top|center_horizontal"
-        android:layout_marginTop="12dp"
-        android:background="@color/transparent"
-        android:fontFamily="sans-serif-medium"
-        android:gravity="center_horizontal"
-        android:text="@string/qr_scan_overlay_subtitle"
-        android:textColor="@color/white"
-        android:textSize="14sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        />
-
 </androidx.constraintlayout.widget.ConstraintLayout>

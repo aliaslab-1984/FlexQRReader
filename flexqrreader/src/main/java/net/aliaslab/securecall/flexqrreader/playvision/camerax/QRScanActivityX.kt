@@ -11,9 +11,6 @@ class QRScanActivityX : QRScannerActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_qrscan_x)
 
-        supportActionBar?.setTitle(R.string.qr_scan_title)
-        supportActionBar?.setSubtitle(R.string.qr_scan_subtitle)
-
         val fragment = CameraScannerXFragment()
         supportFragmentManager.commit {
             replace(R.id.main_frame_layout, fragment)
