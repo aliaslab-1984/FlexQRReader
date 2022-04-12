@@ -14,6 +14,7 @@ import androidx.preference.PreferenceManager
 import net.aliaslab.securecall.flexqrreader.utils.QrUtils
 import net.aliaslab.securecall.flexqrreader.R
 import net.aliaslab.securecall.flexqrreader.playvision.PlayVision
+import net.aliaslab.securecall.flexqrreader.playvision.QRScannerActivity
 import net.aliaslab.securecall.flexqrreader.utils.Utils
 import net.aliaslab.securecall.flexqrreader.playvision.QrCodeScanActivity
 import net.aliaslab.securecall.flexqrreader.playvision.camerax.QRScanActivityX
@@ -42,11 +43,21 @@ public abstract class ScanQrActivity : AppCompatActivity() {
     private var checkingPlayServices = false
     private var isScanningQR = false
 
+    open lateinit var customIntent: Intent
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_qr_code_scan)
 
+        setupIntent()
         readQr()
+    }
+
+    /**
+     * Override this function to assign the correct intent to show the corresponding activity.
+     */
+    public fun setupIntent() {
+        customIntent = Intent(this, QRScanActivityX::class.java)
     }
 
     override fun onResume() {
@@ -76,7 +87,7 @@ public abstract class ScanQrActivity : AppCompatActivity() {
         val useZx = PreferenceManager.getDefaultSharedPreferences(applicationContext)
             .getBoolean("zx", false)
         val useCameraX = PreferenceManager.getDefaultSharedPreferences(applicationContext)
-            .getBoolean("camerax", false)
+            .getBoolean("camerax", true)
         val verboseMsg = "Starting QRcodeScanner..."
 
         Utils.getPackageInfo(this)
@@ -91,11 +102,10 @@ public abstract class ScanQrActivity : AppCompatActivity() {
             // Google Play services
                 // LogEngine.debug("RAD42G", verboseMsg)
                     if (useCameraX) {
-                        val intent = Intent(this, QRScanActivityX::class.java)
-                        resultLauncher.launch(intent)
+                        resultLauncher.launch(customIntent)
                     } else {
-                        val intent = Intent(this, QrCodeScanActivity::class.java)
-                        resultLauncher.launch(intent)
+                       val intent = Intent(this, QrCodeScanActivity::class.java)
+                       resultLauncher.launch(intent)
                     }
         } else {
 

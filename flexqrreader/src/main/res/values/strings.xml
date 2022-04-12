@@ -9,4 +9,11 @@
     <string name="msg_camera_framework_bug" translatable="false">Sorry, the Android camera encountered a problem. You may need to restart the device.</string>
     <string name="enrollment_error_desc">An error occurred while trying to enroll this account. The reported error is:_</string>
     <string name="zebra_description">Select if you prefer to use Google\'s Vision framework or the Zxing\'s version.</string>
+
+
+    <string name="qr_scan_title">QRScan</string>
+    <string name="qr_scan_subtitle"></string>
+    <string name="qr_scan_overlay_title">Scan the QR Code by framing it</string>
+    <string name="qr_scan_overlay_subtitle">If you experience any problem, retry later.</string>
+    <string name="qr_auxillary_button_title"></string>
 </resources>
