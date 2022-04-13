@@ -248,7 +248,9 @@ public class CameraScannerXFragment : Fragment() {
 
     private fun observeCameraState(cameraInfo: CameraInfo) {
         cameraInfo.cameraState.observe(viewLifecycleOwner) { cameraState ->
+            /*
             run {
+
                 when (cameraState.type) {
                     CameraState.Type.PENDING_OPEN -> {
                         // Ask the user to close other camera apps
@@ -282,6 +284,7 @@ public class CameraScannerXFragment : Fragment() {
                     }
                 }
             }
+            */
 
             cameraState.error?.let { error ->
                 when (error.code) {

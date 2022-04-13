@@ -5,7 +5,7 @@ plugins {
     id 'maven-publish'
 }
 
-def libraryVersion = '1.0.4'  // vedi versionName + versionCode
+def libraryVersion = '1.0.6'  // vedi versionName + versionCode
 
 android {
     compileSdkVersion 31
@@ -37,6 +37,7 @@ android {
             buildConfigField("String", "VERSION_NAME", "\"${defaultConfig.versionName}\"")
         }
     }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -55,9 +56,9 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     implementation 'androidx.core:core-ktx:1.7.0'
     implementation 'androidx.appcompat:appcompat:1.4.1'
-    implementation 'com.google.android.material:material:1.5.0'
+    implementation 'com.google.android.material:material:1.4.0'
 
-    implementation 'androidx.preference:preference-ktx:1.2.0'
+    implementation 'androidx.preference:preference-ktx:1.1.1'
 
     // zebra
     implementation 'com.google.zxing:core:3.4.1'

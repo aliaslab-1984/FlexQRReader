@@ -56,7 +56,7 @@ public abstract class ScanQrActivity : AppCompatActivity() {
     /**
      * Override this function to assign the correct intent to show the corresponding activity.
      */
-    public fun setupIntent() {
+    open fun setupIntent() {
         customIntent = Intent(this, QRScanActivityX::class.java)
     }
 
