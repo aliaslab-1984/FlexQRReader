@@ -16,4 +16,6 @@
     <string name="qr_scan_overlay_title">Scan the QR Code by framing it</string>
     <string name="qr_scan_overlay_subtitle">If you experience any problem, retry later.</string>
     <string name="qr_auxillary_button_title"></string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

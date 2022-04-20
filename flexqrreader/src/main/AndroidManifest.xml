@@ -19,6 +19,15 @@
 
     <application>
         <activity
+            android:name=".AdaptiveScanningActivity"
+            android:exported="false" />
+        <activity
+            android:name=".DefaultAdaptiveScanningActivity"
+            android:exported="false" />
+        <activity
+            android:name=".zxing.ZXScanActivity"
+            android:exported="false" />
+        <activity
             android:name=".playvision.camerax.QRScanActivityX"
             android:exported="false" />
     </application>

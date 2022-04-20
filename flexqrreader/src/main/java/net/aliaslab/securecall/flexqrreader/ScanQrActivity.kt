@@ -11,18 +11,17 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.preference.PreferenceManager
+import com.journeyapps.barcodescanner.ScanOptions
 import net.aliaslab.securecall.flexqrreader.utils.QrUtils
-import net.aliaslab.securecall.flexqrreader.R
 import net.aliaslab.securecall.flexqrreader.playvision.PlayVision
-import net.aliaslab.securecall.flexqrreader.playvision.QRScannerActivity
 import net.aliaslab.securecall.flexqrreader.utils.Utils
 import net.aliaslab.securecall.flexqrreader.playvision.QrCodeScanActivity
 import net.aliaslab.securecall.flexqrreader.playvision.camerax.QRScanActivityX
 import net.aliaslab.securecall.flexqrreader.zxing.IntentIntegrator
 import net.aliaslab.securecall.flexqrreader.zxing.IntentResult
-import net.aliaslab.securecall.flexqrreader.zxing.android.Intents
-import java.util.ArrayList
+import net.aliaslab.securecall.flexqrreader.zxing.ZXScanActivity
 
+@Deprecated("This class has been deprecated.", replaceWith = ReplaceWith("AdaptiveScanningActivity"))
 /**
  * Abstract class that defines the logic used to show a QR Scanner View.
  * It fetches the user preferences, anc checks the existence, and the value, of the *"zx"* property.
@@ -43,7 +42,8 @@ public abstract class ScanQrActivity : AppCompatActivity() {
     private var checkingPlayServices = false
     private var isScanningQR = false
 
-    open lateinit var customIntent: Intent
+    open lateinit var customGooglePlayIntent: Intent
+    open lateinit var customZXIntent: ScanOptions
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -57,7 +57,10 @@ public abstract class ScanQrActivity : AppCompatActivity() {
      * Override this function to assign the correct intent to show the corresponding activity.
      */
     open fun setupIntent() {
-        customIntent = Intent(this, QRScanActivityX::class.java)
+        customGooglePlayIntent = Intent(this, QRScanActivityX::class.java)
+        customZXIntent = ScanOptions()
+            .setDesiredBarcodeFormats(ScanOptions.QR_CODE)
+            .setCaptureActivity(ZXScanActivity::class.java)
     }
 
     override fun onResume() {
@@ -85,7 +88,7 @@ public abstract class ScanQrActivity : AppCompatActivity() {
     private fun scanQr() {
 
         val useZx = PreferenceManager.getDefaultSharedPreferences(applicationContext)
-            .getBoolean("zx", false)
+            .getBoolean("zx", true)
         val useCameraX = PreferenceManager.getDefaultSharedPreferences(applicationContext)
             .getBoolean("camerax", true)
         val verboseMsg = "Starting QRcodeScanner..."
@@ -102,21 +105,13 @@ public abstract class ScanQrActivity : AppCompatActivity() {
             // Google Play services
                 // LogEngine.debug("RAD42G", verboseMsg)
                     if (useCameraX) {
-                        resultLauncher.launch(customIntent)
+                        resultLauncher.launch(customGooglePlayIntent)
                     } else {
                        val intent = Intent(this, QrCodeScanActivity::class.java)
                        resultLauncher.launch(intent)
                     }
         } else {
-
-            // Zebra fallback
-            Log.d("RAD42Z", verboseMsg)
-            val intentIntegrator = IntentIntegrator(this)
-            intentIntegrator.addExtra(Intents.Scan.RESULT_DISPLAY_DURATION_MS, 0L)
-            val formats = ArrayList<String>()
-            formats.add("QR_CODE")
-            val alert = intentIntegrator.initiateScan(formats)
-            alert?.show()
+            resultLauncher.launch(customZXIntent.createScanIntent(this))
         }
         isScanningQR = true
     }

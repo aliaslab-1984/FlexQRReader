@@ -5,7 +5,7 @@ import android.os.Bundle
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts.StartActivityForResult
 import androidx.appcompat.app.AppCompatActivity
-import net.aliaslab.securecall.flexqrreader.DefaultQRActivity
+import net.aliaslab.securecall.flexqrreader.DefaultAdaptiveScanningActivity
 
 class MainActivity : AppCompatActivity() {
 
@@ -19,7 +19,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val intent = Intent(this, DefaultQRActivity::class.java)
+        val intent = Intent(this, DefaultAdaptiveScanningActivity::class.java)
         qrActivityLauncher.launch(intent)
     }
 }

@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import com.google.mlkit.vision.barcode.common.Barcode
 import net.aliaslab.securecall.flexqrreader.playvision.camerax.QRScanningViewModel
+import java.lang.Exception
 
 public abstract class QRScannerActivity: AppCompatActivity() {
 
@@ -19,13 +20,22 @@ public abstract class QRScannerActivity: AppCompatActivity() {
         val observer = Observer<List<Barcode>> { barcodeList ->
             // React when the property becomes true
             if (barcodeList.isNotEmpty()) {
-                val firstValue = barcodeList.first().rawValue
-                if (firstValue != null) {
-                    handleResult(firstValue)
+
+                viewModel.strings.value = barcodeList.mapNotNull {
+                    it.rawValue
                 }
             }
         }
 
+        val stringsObserver = Observer<List<String>> { stringList ->
+            // React when the property becomes true
+            if (stringList.isNotEmpty()) {
+                val firstValue = stringList.first()
+                handleResult(firstValue)
+            }
+        }
+
+        viewModel.strings.observe(this, stringsObserver)
         viewModel.barcodes.observe(this, observer)
     }
 
