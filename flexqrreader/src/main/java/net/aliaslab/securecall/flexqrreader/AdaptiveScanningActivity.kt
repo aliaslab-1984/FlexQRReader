@@ -29,13 +29,13 @@ abstract class AdaptiveScanningActivity : AppCompatActivity() {
     private val MY_PERMISSIONS_REQUEST_CAMERA = 1
 
     private var checkingPlayServices = false
-    private var isScanningQR = false
+    var isScanningQR = false
 
     private val viewModel: QRScanningViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_adaptive_scanning)
+        // setContentView(R.layout.activity_adaptive_scanning)
 
         observeViewModel()
         readQr()
@@ -67,8 +67,7 @@ abstract class AdaptiveScanningActivity : AppCompatActivity() {
         scanQr()
     }
 
-    private fun scanQr() {
-
+    public fun getCorrectFragment(): Fragment {
         val useZx = PreferenceManager.getDefaultSharedPreferences(applicationContext)
             .getBoolean("zx", false)
         val useCameraX = PreferenceManager.getDefaultSharedPreferences(applicationContext)
@@ -78,24 +77,18 @@ abstract class AdaptiveScanningActivity : AppCompatActivity() {
         Utils.getPackageInfo(this)
 
         if (!useZx && QrUtils.isHms(this) /*&& PlayVision.isHmsAvailable(getApplicationContext())*/) {
-
             // TODO: Huawei
             Log.d("RAD42H", verboseMsg)
             // ReadingQrManager.startQrHms(this, REQUEST_CODE_DEFINE)
+            return zebraFragment()
         } else if (!useZx && PlayVision.checkPlayServices(this)) {
-            replaceCurrentLayout(googlePlayServicesFragment())
+            return googlePlayServicesFragment()
         } else {
-            replaceCurrentLayout(zebraFragment())
+            return zebraFragment()
         }
-        isScanningQR = true
     }
 
-    private fun replaceCurrentLayout(fragment: Fragment) {
-        supportFragmentManager.commit {
-            replace(R.id.adaptive_main_frame_layout, fragment)
-            setPrimaryNavigationFragment(fragment)
-        }
-    }
+    open abstract fun scanQr()
 
     override fun onRequestPermissionsResult(requestCode: Int,
                                             permissions: Array<String?>,
