@@ -117,6 +117,10 @@ abstract class AdaptiveScanningActivity : AppCompatActivity() {
         }
     }
 
+    /**
+     * We use this method to observe every scan result that gets pushed.
+     * As soon as we find a valid result, we handle it and we quit scanning.
+     */
     private fun observeViewModel() {
         val observer = Observer<List<Barcode>> { barcodeList ->
             // React when the property becomes true
