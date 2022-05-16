@@ -35,7 +35,8 @@ abstract class AdaptiveScanningActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        // setContentView(R.layout.activity_adaptive_scanning)
+
+        // We set the content view into the scanQR() method (which is called by readQR()).
 
         observeViewModel()
         readQr()
@@ -48,8 +49,14 @@ abstract class AdaptiveScanningActivity : AppCompatActivity() {
         checkingPlayServices = false
     }
 
+    /**
+     * Returns the fragment that will be used to scan a barcode/qrcode by using the Google Play Services API.
+     */
     open abstract fun googlePlayServicesFragment(): Fragment
 
+    /**
+     * Returns the fragment that will be used to scan a barcode/qrcode by using the Zebra API.
+     */
     open abstract fun zebraFragment(): Fragment
 
     private fun readQr() {
@@ -70,24 +77,27 @@ abstract class AdaptiveScanningActivity : AppCompatActivity() {
     public fun getCorrectFragment(): Fragment {
         val useZx = PreferenceManager.getDefaultSharedPreferences(applicationContext)
             .getBoolean("zx", false)
-        val useCameraX = PreferenceManager.getDefaultSharedPreferences(applicationContext)
-            .getBoolean("camerax", true)
+        // val useCameraX = PreferenceManager.getDefaultSharedPreferences(applicationContext).getBoolean("camerax", true)
         val verboseMsg = "Starting QRcodeScanner..."
 
         Utils.getPackageInfo(this)
 
-        if (!useZx && QrUtils.isHms(this) /*&& PlayVision.isHmsAvailable(getApplicationContext())*/) {
+        return if (!useZx && QrUtils.isHms(this) /*&& PlayVision.isHmsAvailable(getApplicationContext())*/) {
             // TODO: Huawei
             Log.d("RAD42H", verboseMsg)
             // ReadingQrManager.startQrHms(this, REQUEST_CODE_DEFINE)
-            return zebraFragment()
+            zebraFragment()
         } else if (!useZx && PlayVision.checkPlayServices(this)) {
-            return googlePlayServicesFragment()
+            googlePlayServicesFragment()
         } else {
-            return zebraFragment()
+            zebraFragment()
         }
     }
 
+    /**
+     * This method is used to specify which layout should be used to display this fragment.
+     * Check [scanQr][DefaultAdaptiveScanningActivity.scanQr] for a standard implementation.
+     */
     open abstract fun scanQr()
 
     override fun onRequestPermissionsResult(requestCode: Int,
@@ -145,6 +155,9 @@ abstract class AdaptiveScanningActivity : AppCompatActivity() {
     }
 
     companion object {
+        /**
+         * The key-string used to store into the intent result the scanned text.
+         */
         public const val QR_STRING_CONTENT_KEY = "qr_s"
     }
 

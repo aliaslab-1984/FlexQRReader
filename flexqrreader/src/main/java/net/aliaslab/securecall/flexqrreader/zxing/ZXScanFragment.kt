@@ -14,7 +14,6 @@ import com.google.zxing.BarcodeFormat
 import com.journeyapps.barcodescanner.*
 import net.aliaslab.securecall.flexqrreader.R
 import net.aliaslab.securecall.flexqrreader.playvision.camerax.QRScanningViewModel
-import java.util.*
 
 /**
  * A simple [Fragment] subclass.

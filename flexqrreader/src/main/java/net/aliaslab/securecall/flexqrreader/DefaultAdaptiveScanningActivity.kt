@@ -1,11 +1,14 @@
 package net.aliaslab.securecall.flexqrreader
 
-import android.text.TextUtils.replace
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
 import net.aliaslab.securecall.flexqrreader.playvision.camerax.CameraScannerXFragment
 import net.aliaslab.securecall.flexqrreader.zxing.ZXScanFragment
 
+/**
+ * Implementation of a default behavior for the QR-Scanning Activity.
+ * It uses a super basic layout, with no extra buttons or labels.
+ */
 public class DefaultAdaptiveScanningActivity: AdaptiveScanningActivity() {
 
     override fun googlePlayServicesFragment(): Fragment {
