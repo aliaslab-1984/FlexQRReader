@@ -1,11 +1,9 @@
 package net.aliaslab.securecall.flexqrreader.zxing
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.commit
 import net.aliaslab.securecall.flexqrreader.R
 import net.aliaslab.securecall.flexqrreader.playvision.QRScannerActivity
-import net.aliaslab.securecall.flexqrreader.playvision.camerax.CameraScannerXFragment
 
 class ZXScanActivity : QRScannerActivity() {
 

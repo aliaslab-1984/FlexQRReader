@@ -1,28 +1,22 @@
 package net.aliaslab.securecall.flexqrreader
 
 import android.Manifest
-import android.app.Activity
 import android.content.Intent
 import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.commit
 import androidx.lifecycle.Observer
 import androidx.preference.PreferenceManager
 import com.google.mlkit.vision.barcode.common.Barcode
 import net.aliaslab.securecall.flexqrreader.playvision.PlayVision
-import net.aliaslab.securecall.flexqrreader.playvision.QrCodeScanActivity
 import net.aliaslab.securecall.flexqrreader.playvision.camerax.QRScanningViewModel
 import net.aliaslab.securecall.flexqrreader.utils.QrUtils
 import net.aliaslab.securecall.flexqrreader.utils.Utils
-import net.aliaslab.securecall.flexqrreader.zxing.IntentIntegrator
-import net.aliaslab.securecall.flexqrreader.zxing.IntentResult
 
 abstract class AdaptiveScanningActivity : AppCompatActivity() {
 
@@ -117,31 +111,39 @@ abstract class AdaptiveScanningActivity : AppCompatActivity() {
         }
     }
 
+    private val observer = Observer<List<Barcode>> { barcodeList ->
+        // React when the property becomes true
+        if (barcodeList.isNotEmpty()) {
+
+            viewModel.strings.value = barcodeList.mapNotNull {
+                it.rawValue
+            }
+        }
+    }
+
+    private val stringsObserver = Observer<List<String>> { stringList ->
+        // React when the property becomes true
+        if (stringList.isNotEmpty()) {
+            val firstValue = stringList.first()
+            handleEncodedData(firstValue)
+        }
+    }
+
     /**
-     * We use this method to observe every scan result that gets pushed.
+     * Observes every scan result that gets pushed.
      * As soon as we find a valid result, we handle it and we quit scanning.
      */
     private fun observeViewModel() {
-        val observer = Observer<List<Barcode>> { barcodeList ->
-            // React when the property becomes true
-            if (barcodeList.isNotEmpty()) {
-
-                viewModel.strings.value = barcodeList.mapNotNull {
-                    it.rawValue
-                }
-            }
-        }
-
-        val stringsObserver = Observer<List<String>> { stringList ->
-            // React when the property becomes true
-            if (stringList.isNotEmpty()) {
-                val firstValue = stringList.first()
-                handleEncodedData(firstValue)
-            }
-        }
 
         viewModel.strings.observe(this, stringsObserver)
         viewModel.barcodes.observe(this, observer)
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+
+        viewModel.strings.removeObserver(stringsObserver)
+        viewModel.barcodes.removeObserver(observer)
     }
 
     /**

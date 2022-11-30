@@ -14,26 +14,26 @@ public abstract class QRScannerActivity: AppCompatActivity() {
 
     private val viewModel: QRScanningViewModel by viewModels()
 
+    private val observer = Observer<List<Barcode>> { barcodeList ->
+        // React when the property becomes true
+        if (barcodeList.isNotEmpty()) {
+
+            viewModel.strings.value = barcodeList.mapNotNull {
+                it.rawValue
+            }
+        }
+    }
+
+    private val stringsObserver = Observer<List<String>> { stringList ->
+        // React when the property becomes true
+        if (stringList.isNotEmpty()) {
+            val firstValue = stringList.first()
+            handleResult(firstValue)
+        }
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        val observer = Observer<List<Barcode>> { barcodeList ->
-            // React when the property becomes true
-            if (barcodeList.isNotEmpty()) {
-
-                viewModel.strings.value = barcodeList.mapNotNull {
-                    it.rawValue
-                }
-            }
-        }
-
-        val stringsObserver = Observer<List<String>> { stringList ->
-            // React when the property becomes true
-            if (stringList.isNotEmpty()) {
-                val firstValue = stringList.first()
-                handleResult(firstValue)
-            }
-        }
 
         viewModel.strings.observe(this, stringsObserver)
         viewModel.barcodes.observe(this, observer)
@@ -42,6 +42,7 @@ public abstract class QRScannerActivity: AppCompatActivity() {
     override fun onDestroy() {
         super.onDestroy()
         viewModel.barcodes.removeObservers(this)
+        viewModel.strings.removeObservers(this)
     }
 
     public fun handleResult(stringResult: String) {

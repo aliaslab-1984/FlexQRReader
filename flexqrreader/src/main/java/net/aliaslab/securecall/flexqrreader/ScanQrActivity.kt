@@ -23,13 +23,13 @@ import net.aliaslab.securecall.flexqrreader.zxing.ZXScanActivity
 
 @Deprecated("This class has been deprecated.", replaceWith = ReplaceWith("AdaptiveScanningActivity"))
 /**
- * Abstract class that defines the logic used to show a QR Scanner View.
+ * Defines the logic used to show a QR Scanner View.
  * It fetches the user preferences, anc checks the existence, and the value, of the *"zx"* property.
  * If the preference is set to true, it uses the ZXing activity to scan the QR Code. If it's set to false,
  * it checks if the Google Play services are installed on the device, if the check succeeds, it uses the GooglePlay scanner, otherwise it
  * uses the ZXing activity as a backup.
  *
- * ## Subclassing
+ * ### Subclassing
  * One important part of the class is creating subclasses, that handle the parsing of the QR String differently.
  * There's only one method that needs to be overridden: `handleEncodedData(encodedData: String)`
  * This method will be called every time the child QR Activity reads a string from the QR code.
