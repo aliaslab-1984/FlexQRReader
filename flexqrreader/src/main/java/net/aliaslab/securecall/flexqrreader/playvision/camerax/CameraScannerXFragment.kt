@@ -34,8 +34,8 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
-import com.google.android.gms.vision.barcode.Barcode
 import net.aliaslab.securecall.flexqrreader.databinding.FragmentCameraBinding
+import net.aliaslab.securecall.flexqrreader.playvision.camerax.analyzer.FaceAndTextAnalyzer
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
 import kotlin.math.abs
@@ -168,14 +168,14 @@ public class CameraScannerXFragment : Fragment() {
     /** Initialize CameraX, and prepare to bind the camera use cases  */
     private fun setUpCamera() {
         val cameraProviderFuture = ProcessCameraProvider.getInstance(requireContext())
-        cameraProviderFuture.addListener(Runnable {
+        cameraProviderFuture.addListener({
 
             // CameraProvider
             cameraProvider = cameraProviderFuture.get()
 
             // Select lensFacing depending on the available cameras
             lensFacing = when {
-                hasBackCamera() -> CameraSelector.LENS_FACING_BACK
+                // hasBackCamera() -> CameraSelector.LENS_FACING_BACK
                 hasFrontCamera() -> CameraSelector.LENS_FACING_FRONT
                 else -> throw IllegalStateException("Back and front camera are unavailable")
             }
@@ -219,14 +219,19 @@ public class CameraScannerXFragment : Fragment() {
                 .setTargetRotation(rotation)
                 .build()
 
+        val synchronizer = ImageProxySynchronizer(2)
+
         // ImageAnalysis
         imageAnalyzer = ImageAnalysis.Builder()
             .setTargetAspectRatio(screenAspectRatio)
             .setTargetRotation(rotation)
             .setBackpressureStrategy(ImageAnalysis.STRATEGY_KEEP_ONLY_LATEST)
             .build()
-            .also {
-                it.setAnalyzer(cameraExecutor, BarcodeAnalyzer(viewModel.barcodes))
+            .also {imageAnalysis ->
+                // imageAnalysis.setAnalyzer(cameraExecutor, BarcodeAnalyzer(viewModel.barcodes))
+                // imageAnalysis.setAnalyzer(cameraExecutor, TextAnalyzer(viewModel.textBlocks, synchronizer))
+                // imageAnalysis.setAnalyzer(cameraExecutor, FaceAnalyzer(viewModel.foundFace, false, synchronizer))
+                imageAnalysis.setAnalyzer(cameraExecutor, FaceAndTextAnalyzer(viewModel.foundFace, true, viewModel.textBlocks))
             }
 
         // Must unbind the use-cases before rebinding them

@@ -1,4 +1,4 @@
-package net.aliaslab.securecall.flexqrreader.playvision.camerax
+package net.aliaslab.securecall.flexqrreader.playvision.camerax.analyzer
 
 import android.annotation.SuppressLint
 import android.util.Log
@@ -25,16 +25,20 @@ class BarcodeAnalyzer(private val barcodes: MutableLiveData<List<Barcode>>) : Im
             scanner.process(image)
                 .addOnSuccessListener {
                     if (it.isNotEmpty()) {
-                        Log.d("BarcodeAnalyzer", "Found items! " + it.first().rawValue)
+                        Log.d(tag, "Found items! " + it.first().rawValue)
                         barcodes.postValue(it)
                     }
 
                     imageProxy.close()
                 }
                 .addOnFailureListener {
-                    Log.e("BarcodeAnalyzer", "Detection failed", it)
+                    Log.e(tag, "Detection failed", it)
                     imageProxy.close()
                 }
         }
+    }
+
+    private companion object {
+        private const val tag = "BarcodeAnalyzer"
     }
 }
