@@ -219,8 +219,6 @@ public class CameraScannerXFragment : Fragment() {
                 .setTargetRotation(rotation)
                 .build()
 
-        val synchronizer = ImageProxySynchronizer(2)
-
         // ImageAnalysis
         imageAnalyzer = ImageAnalysis.Builder()
             .setTargetAspectRatio(screenAspectRatio)
