@@ -1,14 +1,10 @@
 package net.aliaslab.securecall.flexqrreader.playvision.camerax
 
-import android.animation.TimeAnimator
-import android.animation.TimeAnimator.TimeListener
-import android.app.Activity
 import android.content.Context
-import android.graphics.*
+import android.graphics.Canvas
+import android.graphics.Paint
 import android.util.AttributeSet
-import android.util.DisplayMetrics
 import android.view.View
-import com.journeyapps.barcodescanner.Size
 import net.aliaslab.securecall.flexqrreader.R
 
 
