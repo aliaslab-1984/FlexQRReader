@@ -1,4 +1,4 @@
-package net.aliaslab.securecall.flexqrreader.mlkit
+package net.aliaslab.securecall.flexqrreader.playvision
 
 import android.Manifest
 import android.app.Activity

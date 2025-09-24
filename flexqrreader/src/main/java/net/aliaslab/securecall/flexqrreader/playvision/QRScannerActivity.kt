@@ -7,9 +7,7 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import com.google.mlkit.vision.barcode.common.Barcode
-import net.aliaslab.securecall.flexqrreader.mlkit.QrCodeScanActivity
 import net.aliaslab.securecall.flexqrreader.playvision.camerax.QRScanningViewModel
-import java.lang.Exception
 
 public abstract class QRScannerActivity: AppCompatActivity() {
 

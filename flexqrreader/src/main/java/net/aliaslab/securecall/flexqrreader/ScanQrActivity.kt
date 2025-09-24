@@ -18,7 +18,7 @@ import androidx.preference.PreferenceManager
 import com.google.mlkit.vision.barcode.BarcodeScanning
 import com.google.mlkit.vision.common.InputImage
 import com.journeyapps.barcodescanner.ScanOptions
-import net.aliaslab.securecall.flexqrreader.mlkit.QrCodeScanActivity
+import net.aliaslab.securecall.flexqrreader.playvision.QrCodeScanActivity
 import net.aliaslab.securecall.flexqrreader.utils.Utils
 import net.aliaslab.securecall.flexqrreader.zxing.IntentIntegrator
 import net.aliaslab.securecall.flexqrreader.zxing.IntentResult
