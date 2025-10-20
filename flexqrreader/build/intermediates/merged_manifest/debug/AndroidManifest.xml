@@ -4,6 +4,38 @@
 
     <uses-sdk
         android:minSdkVersion="21"
-        android:targetSdkVersion="30" />
+        android:targetSdkVersion="33" />
+
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission
+        android:name="android.permission.FLASHLIGHT"
+        android:required="false" />
+
+    <uses-feature android:name="android.hardware.camera.any" />
+    <uses-feature
+        android:name="android.hardware.camera.autofocus"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.camera.flash"
+        android:required="false" />
+    <uses-feature android:name="android.hardware.screen.landscape" />
+    <uses-feature
+        android:name="android.hardware.wifi"
+        android:required="false" />
+
+    <application>
+        <activity
+            android:name="net.aliaslab.securecall.flexqrreader.AdaptiveScanningActivity"
+            android:exported="false" />
+        <activity
+            android:name="net.aliaslab.securecall.flexqrreader.DefaultAdaptiveScanningActivity"
+            android:exported="false" />
+        <activity
+            android:name="net.aliaslab.securecall.flexqrreader.zxing.ZXScanActivity"
+            android:exported="false" />
+        <activity
+            android:name="net.aliaslab.securecall.flexqrreader.playvision.camerax.QRScanActivityX"
+            android:exported="false" />
+    </application>
 
 </manifest>

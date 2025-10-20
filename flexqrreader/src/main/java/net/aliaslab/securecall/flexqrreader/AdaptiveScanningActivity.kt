@@ -81,7 +81,7 @@ abstract class AdaptiveScanningActivity : AppCompatActivity() {
             Log.d("RAD42H", verboseMsg)
             // ReadingQrManager.startQrHms(this, REQUEST_CODE_DEFINE)
             zebraFragment()
-        } else if (!useZx && PlayVision.checkPlayServices(this)) {
+        } else if (!useZx && PlayVision.checkMlKit(this)) {
             googlePlayServicesFragment()
         } else {
             zebraFragment()

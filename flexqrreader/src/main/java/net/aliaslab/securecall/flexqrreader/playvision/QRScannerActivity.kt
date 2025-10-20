@@ -8,7 +8,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import com.google.mlkit.vision.barcode.common.Barcode
 import net.aliaslab.securecall.flexqrreader.playvision.camerax.QRScanningViewModel
-import java.lang.Exception
 
 public abstract class QRScannerActivity: AppCompatActivity() {
 
@@ -45,6 +44,7 @@ public abstract class QRScannerActivity: AppCompatActivity() {
         viewModel.strings.removeObservers(this)
     }
 
+    @androidx.annotation.OptIn(androidx.camera.core.ExperimentalGetImage::class)
     public fun handleResult(stringResult: String) {
         // handle the result depending on the request
         // Better to hide the result, just logging it's length
