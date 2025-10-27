@@ -1,2 +1,0 @@
-D net/aliaslab/securecall/flexqrreader/playvision/camera/CameraSource$FlashMode
-D net/aliaslab/securecall/flexqrreader/playvision/camera/CameraSource$FocusMode
