@@ -4,7 +4,7 @@ plugins {
     id 'maven-publish'
 }
 
-def libraryVersion = '1.1.3'  // vedi versionName + versionCode
+def libraryVersion = '1.1.5'  // vedi versionName + versionCode
 
 android {
     compileSdkVersion 35
