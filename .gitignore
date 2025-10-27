@@ -55,3 +55,7 @@ google-services.json
 
 .idea/deploymentTargetDropDown.xml
 *.aab
+.idea
+flexqrreader/build
+local.properties
+.gradle
